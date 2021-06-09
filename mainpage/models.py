@@ -22,7 +22,7 @@ class detail(models.Model):
     number_of_courses = models.IntegerField()
     number_of_awards = models.IntegerField()
     owner_image = models.ImageField(upload_to='mainpage/')
-    # website = models.URLField(help_text="Enter url of your website.")
+    website = models.URLField(help_text="Enter url of your website.")
 
 
     def delete(self, using=None, keep_parents=False):
@@ -43,7 +43,7 @@ class course(models.Model):
     description = models.CharField(max_length=200, help_text="Describe your couse in short here.")
     details = models.TextField(help_text="Enter All Details of your course here.")
     tags = models.CharField(max_length=600, help_text="Enter Tags for your course i.e. photoshop,excel,microsoft office,access etc. Don't forget to seperate them by comma.")
-    # google_form_url = models.URLField(help_text="Enter URL of google form for applying to this course.")
+    google_form_url = models.URLField(help_text="Enter URL of google form for applying to this course.")
     
     # instructor_image = models.ImageField(upload_to='courses/', blank=True, null=True)
 
@@ -128,6 +128,7 @@ class PeolpeContactUs(models.Model):
  
     class Meta:
         ordering = ['time_of_creation']
+        verbose_name_plural = "People Contact Us"
 
     def __str__(self):
         return self.name
@@ -151,6 +152,11 @@ class People_Request_For_Call(models.Model):
 class AboutUs(models.Model):
     title = models.CharField(max_length=100)
     detail = models.TextField(blank=True, null=True)
+
+
+    class Meta:
+        verbose_name_plural = "About Us"
+
 
     def __str__(self):
         return self.title

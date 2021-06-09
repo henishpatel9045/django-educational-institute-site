@@ -43,7 +43,7 @@
 </p>
 {% endif %}
 
-<form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+<form action="{{ app_path }}" method="post" id="login-form" style="size: 3rem; background-color: burlywood; border-radius: 8px; box-shadow: 10px 10px 15px 15px rgb(158, 151, 88);">{% csrf_token %}
   <div class="form-row">
     {{ form.username.errors }}
     {{ form.username.label_tag }} {{ form.username }}

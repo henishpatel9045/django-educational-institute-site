@@ -45,8 +45,16 @@ def index(request):
     return render(request, "mainpage/index.html", context)
 
 def all_course(request):
+    detail = models.detail.objects.first()
     course = models.course.objects.all()
-    context = {'course': course, 
+    facultie = models.facultie.objects.all()
+    image = models.image.objects.first()
+    students_review = models.students_review.objects.all()
+    context = {'course': course,
+               'detail': detail, 
+               'facultie': facultie,
+               'image': image,
+               'students_review': students_review,
                'course_page': 1}
 
     return render(request, "mainpage/courses.html", context)
@@ -54,10 +62,12 @@ def all_course(request):
 
 def contact(request):
     detail = models.detail.objects.first()
+    image = models.image.objects.first()
     form = forms.ContactUsForm()
     context = {'contact': contact, 
                'form': form, 
                'detail': detail,
+               'image': image,
                'contact_page': 1}
     
     ### Contact Us Form Code
