@@ -1,0 +1,265 @@
+{% extends 'mainpage/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'mainpage/images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <h1 class="mb-2 bread">About Us</h1>
+          <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+      <section class="ftco-section ftco-no-pt ftc-no-pb">
+          <div class="container">
+              <div class="row d-flex">
+                  <div class="col-md-5 order-md-last wrap-about wrap-about d-flex align-items-stretch">
+                      <div class="img" style="background-image: url(images/about.jpg);"></div>
+                  </div>
+                  <div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
+            <h2 class="mb-4">{{ about.title }}</h2>
+                      {{ about.detail|safe }}
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      {% if image.about_us_background %}
+      <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(../../../media/{{image.about_us_background}});" data-stellar-background-ratio="0.5">
+      {% else %}
+      <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static 'mainpage/images/bg_3.jpg' %});" data-stellar-background-ratio="0.5">
+      {% endif %}
+      <div class="container">
+          <div class="row justify-content-center mb-5 pb-2 d-flex">
+              <div class="col-md-6 align-items-stretch d-flex">
+                  {% if image.video_background %}
+                  <div class="img img-video d-flex align-items-center" style="background-image: url(../../../media/{{image.video_background}});">
+                  {% else %}
+                  <div class="img img-video d-flex align-items-center" style="background-image: url({% static 'mainpage/images/about-2.jpg' %});">
+                  {% endif %}
+                      <div class="video justify-content-center">
+                              <a href="{{ detail.video_src }}" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+                                  <span class="ion-ios-play"></span>
+                            </a>
+                          </div>
+                          <!-- <iframe src="https://drive.google.com/file/d/14YtbmTcilSbmVVhqMpCkbNJaXRiljXVM/preview" width="640" height="480"></iframe> -->
+                  </div>
+              </div>
+        <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+          <h2 class="mb-4">{{ detail.title }}</h2>
+          <p>{{ detail.description }}</p>
+          <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p> -->
+        </div>
+      </div>	
+          <div class="row d-md-flex align-items-center justify-content-center">
+              <div class="col-lg-12">
+                  <div class="row d-md-flex align-items-center">
+                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                      <div class="block-18">
+                        <div class="icon"><span class="flaticon-doctor"></span></div>
+                        <div class="text">
+                          <strong class="number" data-number="{{ detail.number_of_students }}">0</strong>
+                          <span>Students</span>
+                        </div>
+                      </div>
+                    </div>
+               {% if facultie %} 
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                      <div class="block-18">
+                        <div class="icon"><span class="flaticon-doctor"></span></div>
+                        <div class="text">
+                          <strong class="number" data-number="{{ detail.number_of_faculties }}">0</strong>
+                          <span>Certified Faculties</span>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                      <div class="block-18">
+                        <div class="icon"><span class="flaticon-doctor"></span></div>
+                        <div class="text">
+                          <strong class="number" data-number="{{ detail.number_of_courses }}">0</strong>
+                          <span>Courses</span>
+                        </div>
+                      </div>
+                    </div>
+                {% if detail.number_of_awards > 0 %}
+                    <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                      <div class="block-18">
+                        <div class="icon"><span class="flaticon-doctor"></span></div>
+                        <div class="text">
+                          <strong class="number" data-number="{{ detail.number_of_awards }}">0</strong>
+                          <span>Awards Wan</span>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+                <!-- <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18">
+                      <div class="icon"><span class="flaticon-doctor"></span></div>
+                    <div class="text">
+                      <strong class="number" data-number="{{ detail.number_of_faculties }}">0</strong>
+                      <span>Certified Faculties</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18">
+                      <div class="icon"><span class="flaticon-doctor"></span></div>
+                    <div class="text">
+                      <strong class="number" data-number="{{ detail.number_of_students_passed }}">0</strong>
+                      <span>Students</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18">
+                      <div class="icon"><span class="flaticon-doctor"></span></div>
+                    <div class="text">
+                      <strong class="number" data-number="{{ detail.number_of_course }}">0</strong>
+                      <span>Courses</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+                  <div class="block-18">
+                      <div class="icon"><span class="flaticon-doctor"></span></div>
+                    <div class="text">
+                      <strong class="number" data-number="{{ detail.number_of_awards }}">0</strong>
+                      <span>Awards Won</span>
+                    </div>
+                  </div>
+                </div> -->
+            </div>
+        </div>
+      </div>
+      </div>
+  </section>
+  {% if students_review %}
+  <section class="ftco-section testimony-section">
+<div class="container">
+  <div class="row justify-content-center mb-5 pb-2">
+    <div class="col-md-8 text-center heading-section ftco-animate">
+      <h2 class="mb-4">Student Says About Us</h2>
+      <!-- <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p> -->
+    </div>
+  </div>
+  <div class="row ftco-animate justify-content-center">
+    <div class="col-md-12">
+      <div class="carousel-testimony owl-carousel">
+      {% for i in students_review %}
+          
+          <div class="item">
+          <div class="testimony-wrap d-flex">
+            <div class="user-img mr-4" style="background-image: url(../../../media/{{i.image}})">
+            </div>
+            <div class="text ml-2">
+                <span class="quote d-flex align-items-center justify-content-center">
+                <i class="icon-quote-left"></i>
+              </span>
+              <p>{{ i.review }}</p>
+              <p class="name">{{ i.name }}</p>
+              <span class="position">{{ i.position }}</span>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+        <!-- <div class="item">
+          <div class="testimony-wrap d-flex">
+            <div class="user-img mr-4" style="background-image: url(images/teacher-2.jpg)">
+            </div>
+            <div class="text ml-2">
+                <span class="quote d-flex align-items-center justify-content-center">
+                <i class="icon-quote-left"></i>
+              </span>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="name">Henry Dee</p>
+              <span class="position">Mother</span>
+            </div>
+          </div>
+        </div>
+       
+        
+        <div class="item">
+          <div class="testimony-wrap d-flex">
+            <div class="user-img mr-4" style="background-image: url(images/teacher-1.jpg)">
+            </div>
+            <div class="text ml-2">
+                <span class="quote d-flex align-items-center justify-content-center">
+                <i class="icon-quote-left"></i>
+              </span>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p class="name">Ken Bosh</p>
+              <span class="position">Mother</span>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endif %}
+
+
+<section class="ftco-gallery">
+    <div class="container-wrap">
+        <div class="row no-gutters">
+                        
+            <div class="col-md-3 ftco-animate">
+                {% if image.what_we_offer %}	
+                <a href="../../../media/{{ image.what_we_offer }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url('../../../media/{{image.what_we_offer}}');">
+                {% else %}
+                <a href="{% static 'mainpage/images/image_1.jpg' %}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({% static 'mainpage/images/course-1.jpg' %});">
+                {% endif %}		
+                    <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                    </a>
+            </div>
+                <div class="col-md-3 ftco-animate">
+                    {% if image.about_us_background %}
+                    <a href="../../../media/{{ image.about_us_background }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url(../../../media/{{image.about_us_background}});">
+                    {% else %}
+                    <a href="{% static 'mainpage/images/image_2.jpg' %}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({% static 'mainpage/images/course-2.jpg' %});">
+                    {% endif %}	
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    {% if image.main_image2 %}
+                    <a href="../../../media/{{ image.main_image2 }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url(../../../media/{{image.main_image2}});">
+                    {% else %}
+                    <a href="{% static 'mainpage/images/image_3.jpg' %}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({% static 'mainpage/images/course-3.jpg' %});">
+                    {% endif %}	
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-md-3 ftco-animate">
+                    {% if image.main_image1 %}
+                    <a href="../../../media/{{ image.main_image1 }}" class="gallery image-popup img d-flex align-items-center" style="background-image: url(../../../media/{{image.main_image1}});">
+                    {% else %}
+                    <a href="{% static 'mainpage/images/image_4.jpg' %}" class="gallery image-popup img d-flex align-items-center" style="background-image: url({% static 'mainpage/images/course-4.jpg' %});">
+                    {% endif %}	
+                        <div class="icon mb-4 d-flex align-items-center justify-content-center">
+                        <span class="icon-instagram"></span>
+                    </div>
+                    </a>
+                </div>
+    </div>
+    </div>
+</section>
+
+
+{% endblock content %}

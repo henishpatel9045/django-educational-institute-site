@@ -1,0 +1,69 @@
+{% extends "mainpage/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'mainpage/images/bg_1.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-9 ftco-animate text-center">
+          <h1 class="mb-2 bread">Course Detail</h1>
+           <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{% url 'course' %}">Courses <i class="ion-ios-arrow-forward"></i></a></span> <span>Course Detail <i class="ion-ios-arrow-forward"></i></span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      
+      <section class="ftco-section">
+          <div class="container">
+              <div class="row">
+        <div class="ftco-animate">
+          <h2 class="mb-3">#{{ course_id }}. {{ courses.name }}</h2>
+          <p>
+            <img src="../../../media/{{ courses.image }}" alt="" class="img-fluid">
+          </p>
+          {{ courses.details|safe }}
+          <div class="tag-widget post-tag-container mb-5 mt-5">
+            <div class="tagcloud">
+                {% for i in tags %}
+              <a href="#" class="tag-cloud-link">{{ i }}</a>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <div class="about-author d-flex p-4 bg-light">
+            <div class="col-md-6 col-lg-3 ftco-animate">
+							<div class="staff">
+								<div class="img-wrap d-flex align-items-stretch">
+									<div class="img align-self-stretch" style="background-image: url(../../../media/{{fac.image}});"></div>
+								</div>
+								<div class="text pt-3 text-center">
+									<div class="faded">
+										<p></p>
+										<ul class="ftco-social text-center">
+							
+							<li class="ftco-animate"><a href="https://www.facebook.com/{{ fac.facebook }}"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="https://api.whatsapp.com/send/?phone=91{{ fac.whatsapp }}&text=Hi%20Sir"><span class="icon-whatsapp"></span></a></li>
+							<li class="ftco-animate"><a href="https://www.instagram.com/{{ fac.instagram }}/"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+								</div>
+							</div>
+						</div>
+            <div class="desc">
+              <h3>{{ courses.instructor }}</h3>
+              <p>{{ courses.description }}</p>
+            </div>
+          </div>
+
+            <!-- END comment-list -->
+            
+        <a href="{{ courses.google_form_url }}" class="btn py-3 px-4 btn-primary">Apply Now</a>
+</section>
+      
+
+
+{% endblock content %}
+
